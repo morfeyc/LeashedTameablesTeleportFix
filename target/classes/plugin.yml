@@ -1,0 +1,4 @@
+name: LeashedCatTeleportFix
+version: '1.0'
+main: leashedcatteleportfix.leashedcatteleportfix.LeashedCatTeleportFix
+api-version: 1.19
