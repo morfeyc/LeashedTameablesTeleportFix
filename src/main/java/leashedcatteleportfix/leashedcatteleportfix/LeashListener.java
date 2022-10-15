@@ -14,7 +14,8 @@ import org.bukkit.event.entity.EntityUnleashEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EventListener implements Listener {
+public class LeashListener implements Listener {
+
     private Map<Integer, Location> tameablePrevPos = new HashMap<>();
 
     @EventHandler(priority = EventPriority.LOWEST)
@@ -24,13 +25,9 @@ public class EventListener implements Listener {
         if (!(entity instanceof Tameable)) return;
         Tameable tameable = (Tameable) entity;
 
-        boolean isTamed = tameable.isTamed();
-        if (!isTamed) return;
+        if (!tameable.isLeashed() || !tameable.isTamed()) return;
 
         tameablePrevPos.put(entity.getEntityId(), entity.getLocation());
-
-        boolean isLeashed = tameable.isLeashed();
-        if (!isLeashed) return;
 
         Entity leashHolder = tameable.getLeashHolder();
         if (!(leashHolder instanceof Player)) {
