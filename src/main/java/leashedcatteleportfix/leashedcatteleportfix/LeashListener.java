@@ -27,11 +27,10 @@ public class LeashListener implements Listener {
 
         if (!tameable.isLeashed() || !tameable.isTamed()) return;
 
-        tameablePrevPos.put(entity.getEntityId(), entity.getLocation());
-
         Entity leashHolder = tameable.getLeashHolder();
         if (!(leashHolder instanceof Player)) {
             event.setCancelled(true);
+            tameablePrevPos.put(entity.getEntityId(), entity.getLocation());
         }
     }
 
@@ -43,6 +42,7 @@ public class LeashListener implements Listener {
         if (!(leashHolder instanceof Player)){
             Entity entity = event.getEntity();
             entity.teleport(tameablePrevPos.get(entity.getEntityId()));
+            tameablePrevPos.remove(entity.getEntityId());
             event.setCancelled(true);
         }
     }
