@@ -1,4 +1,4 @@
-name: LeashedCatTeleportFix
+name: LeashedTameablesTeleportFix
 version: '${project.version}'
-main: leashedcatteleportfix.leashedcatteleportfix.LeashedCatTeleportFix
+main: leashedtameablesteleportfix.LeashedTameablesTeleportFix
 api-version: 1.19
